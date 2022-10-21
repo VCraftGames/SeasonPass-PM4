@@ -5,6 +5,7 @@ namespace TungstenVn\SeasonPass\subCommands;
 use pocketmine\player\Player;
 
 use pocketmine\item\Item;
+use pocketmine\Server;
 class setItemInfo
 {
 
@@ -37,7 +38,7 @@ class setItemInfo
     }
     public function checkRequirement(Player $sender,array $args,int $type)
     {
-        if ($sender->getName() !== "YTBJero"){
+        if (!Server::getInstance()->isOp($sender->getName())) {
             $sender->sendMessage("§eUse /ssp help");
             return null;
         }
