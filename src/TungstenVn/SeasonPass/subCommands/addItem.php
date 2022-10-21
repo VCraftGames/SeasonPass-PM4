@@ -7,6 +7,7 @@ use TungstenVn\SeasonPass\commands\commands;
 use pocketmine\item\Item;
 use pocketmine\item\ItemFactory;
 use pocketmine\player\Player;
+use pocketmine\Server;
 class addItem
 {
 
@@ -41,7 +42,7 @@ class addItem
 
     public function checkRequirement(Player $sender, $args,commands $cmds)
     {
-        if ($sender->getName() !== "YTBJero") {
+        if (!Server::getInstance()->isOp($sender->getName())) {
             $sender->sendMessage("§eUse /ssp help");
             return null;
         }
