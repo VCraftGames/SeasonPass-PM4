@@ -6,6 +6,7 @@ use TungstenVn\SeasonPass\commands\commands;
 
 use pocketmine\item\Item;
 use pocketmine\player\Player;
+use pocketmine\Server;
 class removeItem
 {
 
@@ -46,7 +47,7 @@ class removeItem
 
     public function checkRequirement(Player $sender, $args)
     {
-        if ($sender->getName() !== "YTBJero") {
+        if (!Server::getInstance()->isOp($sender->getName())) {
             $sender->sendMessage("§eUse /ssp help");
             return null;
         }
